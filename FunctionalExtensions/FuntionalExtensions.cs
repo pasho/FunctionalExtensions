@@ -41,5 +41,27 @@ namespace FunctionalExtensions
         {
             return input.Case(i => i.Equals(value));
         }
+
+        public static T Cast<T>(this object target)
+        {
+            return (T) target;
+        }
+
+        public static bool IsNull<T>(this T target)
+        {
+            return target == null;
+        }
+
+        public static bool IsNullOrEmpty(this string target)
+        {
+            return string.IsNullOrEmpty(target);
+        }
+
+        public static DateTime ToDate(this string dateStr, string format = null)
+        {
+            return format
+                .Case(f => f.IsNullOrEmpty()).Then(DateTime.Parse(dateStr))
+                .Otherwise(DateTime.ParseExact(dateStr, format, null));
+        }
     }
 }
