@@ -52,6 +52,11 @@ namespace FunctionalExtensions
             return target == null;
         }
 
+        public static bool IsNotNull<T>(this T target)
+        {
+            return target != null;
+        }
+
         public static bool IsNullOrEmpty(this string target)
         {
             return string.IsNullOrEmpty(target);
